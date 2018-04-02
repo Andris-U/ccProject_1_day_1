@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS deals;
+DROP TABLE IF EXISTS burgers;
+DROP TABLE IF EXISTS joints;
+
+CREATE TABLE joints (
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255),
+  address VARCHAR(255),
+  url VARCHAR(255)
+);
+
+CREATE TABLE burgers (
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255),
+  stars INT4,
+  price FLOAT,
+  joint_id INT4 REFERENCES joints(id) ON DELETE CASCADE
+);
+
+CREATE TABLE deals (
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255),
+  days VARCHAR(255),
+  value INT,
+  burger_id INT4 REFERENCES burgers(id) ON DELETE CASCADE
+);

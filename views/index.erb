@@ -1,0 +1,8 @@
+
+<h1>Today's Deals!</h1><br><br>
+
+<% deals = Deal.todays_deal %>
+<% deals.each do |deal| %>
+<div><%= deal.name %>
+<%= deal.value %></div>
+<% end %>
