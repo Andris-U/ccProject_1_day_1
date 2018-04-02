@@ -23,6 +23,25 @@ class Deal
     @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
+  def delete
+    sql = "
+      DELETE FROM deals
+      WHERE id = $1;
+    "
+    values = [@id]
+    SqlRunner.run sql, values
+  end
+
+  def update
+    sql = "
+      SET (name, burger_id, days, value)
+        = ($1, $2, $3, $4)
+      WHERE id = $5;
+    "
+    values = [@name, @burger_id, @days, @value, @id]
+    SqlRunner.run sql, values
+  end
+
   def self.todays_deal
     deals = Deal.all
     current_day = Time.now.strftime("%a")

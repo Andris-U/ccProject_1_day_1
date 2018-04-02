@@ -1,4 +1,4 @@
-require '../db/sql_runner'
+require_relative '../db/sql_runner'
 
 class Burger
   attr_accessor :name, :stars, :price, :joint_id
@@ -20,6 +20,15 @@ class Burger
     "
     values = [@name, @stars, @price, @joint_id]
     @id = SqlRunner.run(sql, values).first['id'].to_i
+  end
+
+  def delete
+    sql = "
+      DELETE FROM burgers
+      WHERE id = $1;
+    "
+    values = [@id]
+    SqlRunner.run sql, values
   end
 
   def self.all

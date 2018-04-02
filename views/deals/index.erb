@@ -1,0 +1,6 @@
+
+<% Deal.all.each do |deal| %>
+<%= deal.name %><br>
+<%= deal.days %> <br>
+<%= "#{deal.value}% reduced price per burger!" %> <br>
+<% end %>
