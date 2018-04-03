@@ -1,0 +1,20 @@
+<form class="" action="/deals" method="post">
+  <label for="name">Name: </label>
+  <input type="text" name="name" value="">
+
+  <label for="days">Day available: </label>
+  <input type="text" name="days" value="">
+
+  <label for="value">Value: </label>
+  <input type="text" name="value" value="">
+
+  <label for="burger_id">Burger: </label>
+  <select class="" name="burger_id">
+    <% @burgers.each do |burger| %>
+    <option value="<%= burger.id %>"><%= burger.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" name="submit" value="Submit!">
+
+</form>

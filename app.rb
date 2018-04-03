@@ -6,5 +6,6 @@ require_relative 'controllers/joints_controller'
 require_relative 'models/deal'
 
 get '/' do
+  @burgers = Burger.all
   erb :index
 end

@@ -1,0 +1,23 @@
+<form class="" action="/deals/<%= @deal.id %>/edit" method="post">
+  <label for="name">Name: </label>
+  <input type="text" name="name" value="<%= @deal.name %>">
+
+  <label for="days">Day available: </label>
+  <input type="text" name="days" value="<%= @deal.days %>">
+
+  <label for="value">Value: </label>
+  <input type="text" name="value" value="<%= @deal.value %>">
+
+  <label for="burger">Burger: </label>
+  <select class="" name="burger" >
+    <% @deals.each do |deal| %>
+    <% if deal.id == @deal.id %>
+    <option value="<%= deal.id %>" select="selected"><%= deal.name %></option>
+    <% else %>
+    <option value="<%= deal.id %>"><%= deal.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" name="submit" value="Submit!">
+
+</form>

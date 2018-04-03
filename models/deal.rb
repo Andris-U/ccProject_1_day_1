@@ -10,7 +10,7 @@ class Deal
     @burger_id = options['burger_id'].to_i
     @days = options['days']
     @value = options['value']
-    @id = nil
+    @id = options['id'].to_i
   end
 
   def save
@@ -41,6 +41,16 @@ class Deal
     values = [@name, @burger_id, @days, @value, @id]
     SqlRunner.run sql, values
   end
+
+    def self.find_id id
+      sql = "
+        SELECT * FROM deals
+        WHERE id = $1;
+      "
+      values = [id]
+      result = SqlRunner.run(sql, values).first
+      return result != nil ? Deal.new(result) : nil
+    end
 
   def self.todays_deal
     deals = Deal.all

@@ -1,0 +1,13 @@
+
+<form class="" action="/joints/<%= @joint.id.to_s %>" method="post">
+  <label for="name">Name: </label>
+  <input type="text" name="name" value="<%= @joint.name %>">
+
+  <label for="address">Address: </label>
+  <input type="text" name="address" value="<%= @joint.address %>">
+
+  <label for="url">Website: </label>
+  <input type="text" name="url" value="<%= @joint.url %>">
+
+  <input type="submit" name="" value="Submit!">
+</form>

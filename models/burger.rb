@@ -9,7 +9,7 @@ class Burger
     @stars = options['stars'].to_i
     @price = options['price'].to_f
     @joint_id = options['joint_id'].to_i
-    @id = nil
+    @id = options['id'].to_i
   end
 
   def save
@@ -30,6 +30,16 @@ class Burger
     values = [@id]
     SqlRunner.run sql, values
   end
+
+    def self.find_id id
+      sql = "
+        SELECT * FROM burgers
+        WHERE id = $1;
+      "
+      values = [id]
+      result = SqlRunner.run(sql, values).first
+      return result != nil ? Burger.new(result) : nil
+    end
 
   def self.all
     sql = "

@@ -3,4 +3,13 @@
 Joint: <%= joint.name %>
 Address : <%= joint.address %>
 URL: <%= joint.url %>
-<% end %> 
+<form class="" action="/joints/<%= joint.id %>/edit" method="get">
+<input type="submit" name="edit" value="Edit">
+</form>
+<form class="" action="/joints/<%= joint.id %>/delete" method="post">
+<input type="submit" name="delete" value="Delete">
+</form>
+<% end %>
+<form class="" action="/joints/new" method="get">
+  <input type="submit" name="get-new" value="Add">
+</form>

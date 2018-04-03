@@ -8,7 +8,7 @@ class Joint
     @name = options['name']
     @address = options['address']
     @url = options['url'] ||= ''
-    @id = nil
+    @id =  options['id'].to_i if options['id']
   end
 
   def save
@@ -21,6 +21,17 @@ class Joint
     @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
+  def update
+    sql = "
+      UPDATE joints
+      SET (name, address, url)
+        = ($1, $2, $3)
+      WHERE id = $4;
+    "
+    values = [@name, @address, @url, @id]
+    SqlRunner.run sql, values
+  end
+
     def delete
       sql = "
         DELETE FROM joints
@@ -28,6 +39,16 @@ class Joint
       "
       values = [@id]
       SqlRunner.run sql, values
+    end
+
+    def self.find_id id
+      sql = "
+        SELECT * FROM joints
+        WHERE id = $1;
+      "
+      values = [id]
+      result = SqlRunner.run(sql, values).first
+      return result != nil ? Joint.new(result) : nil
     end
 
   def self.all

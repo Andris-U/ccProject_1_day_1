@@ -3,4 +3,14 @@
 <%= deal.name %><br>
 <%= deal.days %> <br>
 <%= "#{deal.value}% reduced price per burger!" %> <br>
+<form class="" action="/deals/<%= deal.id %>/edit" method="get">
+  <input type="submit" name="edit" value="Edit">
+</form>
+<form class="" action="/deals/<%= deal.id %>/delete" method="post">
+  <input type="submit" name="delete" value="Delete">
+</form>
 <% end %>
+
+<form class="" action="/deals/new" method="get">
+  <input type="submit" name="new" value="New">
+</form>

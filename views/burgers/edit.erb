@@ -1,0 +1,20 @@
+
+<form class="" action="/burgers/<%= @burger.id.to_s %>" method="post">
+  <label for="name">Name: </label>
+  <input type="text" name="name" value="<%= @burger.name %>">
+
+  <label for="stars">Stars </label>
+  <input type="number" name="stars" value="<%= @burger.stars %>">
+
+  <label for="price">Price:  </label>
+  <input type="text" name="price" value="<%= @burger.price %>">
+
+  <label for="joint_id">Joint: </label>
+  <select class="" name="joint_id">
+    <% @joints.each do |joint| %>
+    <option value="<%= joint.id %>"><%= joint.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" name="" value="Submit!">
+</form>
