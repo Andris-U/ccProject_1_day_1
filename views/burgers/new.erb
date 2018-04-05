@@ -1,19 +1,24 @@
-<form class="" action="/burgers" method="post">
-  <label for="name">Name: </label>
-  <input type="text" name="name" value="">
 
-  <label for="stars">Stars: </label>
-  <input type="number" name="stars" value="">
+  <form class="container column" action="/burgers" method="post">
+    <label for="name">Name:
+    </label>
+    <input type="text" name="name" value="">
 
-  <label for="price">Price: </label>
-  <input type="text" name="price" value="">
+    <label for="stars">Stars:
+    </label>
+    <input type="number" name="stars" value="">
 
-  <label for="joint_id">Joint: </label>
-  <select class="" name="joint_id">
-    <% @joints.each do |joint| %>
-    <option value="<%= joint.id %>"><%= joint.name %></option>
-    <% end %>
-  </select>
+    <label for="price">Price:
+    </label>
+    <input type="text" name="price" value="">
 
-  <input type="submit" name="submit" value="Submit!">
-</form>
+    <label for="joint_id">Joint:
+    </label>
+    <select class="" name="joint_id">
+      <% @joints.each do |joint| %>
+        <option value="<%= joint.id %>"><%= joint.name %></option>
+      <% end %>
+    </select>
+
+    <input type="submit" name="submit" value="Submit!">
+  </form>

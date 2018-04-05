@@ -1,16 +1,38 @@
+<div class="container column">
+  <div class="container main-list fcenter">
+    <h1>All deals</h1><br>
+  </div>
 
-<% Deal.all.each do |deal| %>
-<%= deal.name %><br>
-<%= deal.days %> <br>
-<%= "#{deal.value}% reduced price per burger!" %> <br>
-<form class="" action="/deals/<%= deal.id %>/edit" method="get">
-  <input type="submit" name="edit" value="Edit">
-</form>
-<form class="" action="/deals/<%= deal.id %>/delete" method="post">
-  <input type="submit" name="delete" value="Delete">
-</form>
-<% end %>
+  <div class="container main-list">
 
-<form class="" action="/deals/new" method="get">
-  <input type="submit" name="new" value="New">
-</form>
+    <% Deal.all.each do |deal| %>
+      <!-- <a href="/deals/<%= deal.id %>"> -->
+      <div class="item">
+        <ul>
+          <li><%= deal.name %></li>
+          <li><%= deal.days %></li>
+          <li><%= "#{deal.value}% reduced price per burger!" %></li>
+          <li class="form-btns">
+            <form class="" action="/deals/<%= deal.id %>" method="get">
+              <input type="submit" name="show" value="Show">
+            </form>
+            <form class="" action="/deals/<%= deal.id %>/edit" method="get">
+              <input type="submit" name="edit" value="Edit">
+            </form>
+            <form class="" action="/deals/<%= deal.id %>/delete" method="post">
+              <input type="submit" name="delete" value="Delete">
+            </form>
+          </li>
+        </ul>
+      </div>
+      <!-- </a> -->
+    <% end %>
+  </div>
+  <ul>
+    <li>
+      <form class="" action="/deals/new" method="get">
+        <input type="submit" name="new" value="New">
+      </form>
+    </li>
+  </ul>
+</div>

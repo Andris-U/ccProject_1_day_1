@@ -1,15 +1,40 @@
+<div class="container column">
 
-<% Burger.all.each do |burger| %>
-<%= burger.name %><br>
-<%= burger.stars %> <br>
-<%= burger.price %> <br>
-<form class="" action="/burgers/<%= burger.id %>/edit" method="get">
-  <input type="submit" name="edit" value="Edit">
-</form>
-<form class="" action="/burgers/<%= burger.id %>/delete" method="post">
-  <input type="submit" name="delete" value="Delete">
-</form>
-<% end %>
-<form class="" action="/burgers/new" method="get">
-  <input type="submit" name="new" value="New">
-</form>
+<div class="container main-list fcenter">
+  <h1>The Good Stuff</h1><br>
+</div>
+  <div class="container main-list">
+
+    <% Burger.all.each do |burger| %>
+      <div class="item">
+        <ul>
+          <li><%= burger.name %></li>
+          <li><div class="stars">
+            <% burger.stars.times do %>
+              <%= "<img src='/images/star2.png'>" %>
+            <% end %>
+          </div></li>
+          <li>Price: £<%= burger.price %></li>
+          <li class="form-btns">
+            <form class="" action="/burgers/<%= burger.id %>/edit" method="get">
+              <input type="submit" name="edit" value="Edit">
+            </form>
+            <form class="" action="/burgers/<%= burger.id %>/delete" method="post">
+              <input type="submit" name="delete" value="Delete">
+            </form>
+            <form class="" action="/burgers/<%= burger.id %>" method="get">
+              <input type="submit" name="show" value="Show">
+            </form>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <ul>
+    <li>
+      <form class="" action="/burgers/new" method="get">
+        <input type="submit" name="new" value="New">
+      </form>
+    </li>
+  </ul>
+</div>

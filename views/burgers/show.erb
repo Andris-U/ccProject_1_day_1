@@ -1,0 +1,25 @@
+<div class="container column">
+
+<div class="item">
+Burger: <%= @burger.name %><br>
+Stars:<% @burger.stars.times do %>
+<%= "<img src='/images/star2.png'>" %>
+<% end %><br>
+Price: £<%= @burger.price %>
+</div>
+
+<h3>Deals:</h3>
+
+<% @deals.each do |deal| %>
+<% if @burger.id == deal.burger_id %>
+<div class="item"><%= deal.name %><br>
+Available on: <%= deal.days %><br>
+Value: <%= deal.value %>% off per burger!
+<form class="" action="../deals/<%= deal.id %>" method="get">
+  <input type="submit" name="show" value="Show">
+</form>
+</div>
+<% end %>
+<% end %>
+
+</div>

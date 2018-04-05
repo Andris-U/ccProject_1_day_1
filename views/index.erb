@@ -1,13 +1,31 @@
+<div class="container column">
 
-<h1>Today's Deals!</h1><br><br>
+<div class="container main-list fcenter">
+  <h1>Today's Deals!</h1><br>
+</div>
+  <div class="container main-list">
 
-<% deals = Deal.todays_deal %>
-<% deals.each do |deal| %>
-<div class="item-box"><%= deal.name %>
-<% @burgers.each do |burger| %>
-<% if burger.id == deal.burger_id %>
-Burger: <%= burger.name %>
-<% end %>
-<% end %>
-<%= deal.value %></div>
-<% end %>
+    <% deals = Deal.todays_deal %>
+      <% deals.each do |deal| %>
+        <!-- <a href="/deals/<%= deal.id %>"> -->
+        <div class="item">
+          <ul>
+            <li><%= deal.name %></li>
+
+            <% @burgers.each do |burger| %>
+              <% if burger.id == deal.burger_id %>
+                Burger:
+                <%= burger.name %></li>
+            <% end %>
+          <% end %>
+          <li><%= deal.value %>% off per unit</li>
+        </ul>
+        <form class="show-deal" action="/deals/<%= deal.id %>" method="get">
+          <input type="submit" name="show" value="Show deal!">
+        </form>
+      </div>
+      <!-- </a> -->
+    <% end %>
+  </div>
+
+</div>

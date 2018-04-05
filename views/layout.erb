@@ -7,16 +7,28 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
   </head>
   <body>
-
-<div class="top-nav">
-    <a href="/">Home</a>
-    <a href="/deals">Deals</a>
-    <a href="/joints">Joints</a>
-    <a href="/burgers">Burgers</a>
-  </div>
-</div>
-
-    <%= yield %>
-
+    <div class="main-container">
+      <div class="main-area">
+        <nav class="top-nav">
+          <ul>
+            <li class="btn1">
+              <a href="/">Home</a>
+            </li>
+            <li class="btn2">
+              <a href="/deals">Deals</a>
+            </li>
+            <li class="btn3">
+              <a href="/joints">Joints</a>
+            </li>
+            <li class="btn4">
+              <a href="/burgers">Burgers</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

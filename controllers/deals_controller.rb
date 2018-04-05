@@ -20,17 +20,26 @@ post '/deals' do
   redirect to "/deals"
 end
 
+get '/deals/:id' do
+  @burgers = Burger.all
+  @joints = Joint.all
+  @deal = Deal.find_id(params['id'])
+  erb :'deals/show'
+end
+
+
+
 ### EDIT ###
 get '/deals/:id/edit' do
-  @deal = Deal.new(params['id'])
+  @burgers = Burger.all ||= []
+  @deal = Deal.find_id(params['id'])
   @deals = Deal.all
   erb :"deals/edit"
 end
 
 post '/deals/:id' do
-  p params
   deal = Deal.new(params)
-  deal.save
+  deal.update
   redirect to '/deals'
 end
 

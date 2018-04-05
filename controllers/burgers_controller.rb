@@ -6,6 +6,12 @@ get '/burgers' do
   erb :"burgers/index"
 end
 
+get '/burgers/:id' do
+  @burger = Burger.find_id(params['id'])
+  @deals = Deal.all
+  erb :"burgers/show"
+end
+
 ### NEW ###
 get '/burgers/new' do
   @joints = Joint.all

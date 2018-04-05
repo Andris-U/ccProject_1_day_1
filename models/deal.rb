@@ -34,6 +34,7 @@ class Deal
 
   def update
     sql = "
+    UPDATE deals
       SET (name, burger_id, days, value)
         = ($1, $2, $3, $4)
       WHERE id = $5;

@@ -1,15 +1,37 @@
+<div class="container column">
 
-<% @joints.each do |joint| %>
-Joint: <%= joint.name %>
-Address : <%= joint.address %>
-URL: <%= joint.url %>
-<form class="" action="/joints/<%= joint.id %>/edit" method="get">
-<input type="submit" name="edit" value="Edit">
-</form>
-<form class="" action="/joints/<%= joint.id %>/delete" method="post">
-<input type="submit" name="delete" value="Delete">
-</form>
-<% end %>
-<form class="" action="/joints/new" method="get">
-  <input type="submit" name="get-new" value="Add">
-</form>
+  <div class="container main-list fcenter">
+    <h1>All Joints</h1><br>
+  </div>
+  <div class="container main-list">
+
+    <% @joints.each do |joint| %>
+      <div class="item">
+        <ul>
+          <li>Joint:
+            <%= joint.name %></li>
+          <li>Address :
+            <a href="<%= joint.address %>"><%= joint.address %></a></li>
+          <li>URL:
+            <%= joint.url %></li>
+          <li class="form-btns">
+            <form class="" action="/joints/<%= joint.id %>/edit" method="get">
+              <input type="submit" name="edit" value="Edit">
+            </form>
+            <form class="" action="/joints/<%= joint.id %>/delete" method="post">
+              <input type="submit" name="delete" value="Delete">
+            </form>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <ul>
+    <li>
+      <form class="" action="/joints/new" method="get">
+        <input type="submit" name="get-new" value="Add">
+      </form>
+    </li>
+  </lu>
+
+</div>

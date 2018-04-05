@@ -9,3 +9,5 @@ get '/' do
   @burgers = Burger.all
   erb :index
 end
+
+#map key: AIzaSyDxUuOlDBUjSOYzkyOc6ct7oEFc3nBelhU 
